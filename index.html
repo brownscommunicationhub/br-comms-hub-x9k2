@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Brown Recycling — Communication Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #E8620A;
+    --orange-dark: #c4510a;
+    --orange-light: #FEF0E6;
+    --yellow: #FFD100;
+    --green: #107c10;
+    --green-light: #dff6dd;
+    --amber: #835200;
+    --amber-light: #fff4ce;
+    --gray-dark: #201f1e;
+    --gray-mid: #605e5c;
+    --gray-light: #f3f2f1;
+    --gray-border: #edebe9;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gray-light);
+    color: var(--gray-dark);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--orange);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(255,209,0,0.08);
+    bottom: -80px; left: 60px;
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 36px;
+    position: relative;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .header-logo-icon {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    backdrop-filter: blur(4px);
+  }
+  .header-logo-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .header-logo-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .header-tagline {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    max-width: 520px;
+    border-left: 3px solid var(--yellow);
+    padding-left: 14px;
+  }
+
+  /* ── ANNOUNCEMENT ── */
+  .announce {
+    background: #fff8f0;
+    border-left: 4px solid var(--orange);
+    margin: 0;
+    padding: 0;
+  }
+  .announce-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #7a3a0a;
+  }
+  .announce-inner strong { font-weight: 600; }
+  .announce-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 24px 40px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 28px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--gray-border);
+  }
+
+  /* ── FORM CARDS GRID ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--orange);
+    box-shadow: 0 4px 16px rgba(232,98,10,0.12);
+    transform: translateY(-1px);
+  }
+  .card.disabled {
+    opacity: 0.65;
+    cursor: default;
+    pointer-events: none;
+  }
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .icon-orange { background: var(--orange-light); }
+  .icon-yellow { background: #fef9e7; }
+  .icon-gray { background: var(--gray-light); }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-open { background: var(--green-light); color: var(--green); }
+  .badge-soon { background: var(--amber-light); color: var(--amber); }
+  .badge-login { background: var(--gray-light); color: var(--gray-mid); border: 1px solid var(--gray-border); }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: var(--gray-mid);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .card-arrow {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--gray-mid);
+    font-size: 16px;
+    margin-top: 4px;
+  }
+
+  /* ── HELP SECTION ── */
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .help-card {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .help-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .help-card-title span { font-size: 16px; }
+  .help-card-body {
+    font-size: 12px;
+    color: var(--gray-mid);
+    line-height: 1.5;
+  }
+  .help-card-body a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .help-card-body a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--orange);
+    margin-top: 0;
+  }
+  .footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-icon { font-size: 18px; flex-shrink: 0; }
+  .footer-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--gray-mid);
+  }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    .cards { grid-template-columns: 1fr; }
+    .help-grid { grid-template-columns: 1fr; }
+    .header-inner { padding: 24px 16px 28px; }
+    .main { padding: 20px 16px 32px; }
+  }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.4s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.15s; }
+  .fade-in:nth-child(4) { animation-delay: 0.2s; }
+  .fade-in:nth-child(5) { animation-delay: 0.25s; }
+  .fade-in:nth-child(6) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="header-logo-icon">♻️</div>
+      <div>
+        <div class="header-logo-text">Brown Recycling</div>
+        <div class="header-logo-sub">Limited</div>
+      </div>
+    </div>
+    <h1 class="header-title">Communication Hub</h1>
+    <p class="header-tagline">Your central hub for reporting, feedback and operations. Most forms are open to everyone — no login needed.</p>
+  </div>
+</header>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  <div class="announce-inner">
+    <div class="announce-dot"></div>
+    <div><strong>Near miss form is now live.</strong> Additional forms will be added shortly — check back for updates.</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>Open access — no login needed</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber);"></div>Coming soon</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gray-mid);"></div>Login required — company account</div>
+  </div>
+
+  <!-- HEALTH, SAFETY & COMPLIANCE -->
+  <div class="section">
+    <div class="section-label">Health, safety &amp; compliance</div>
+    <div class="cards">
+      <a href="PASTE_NEAR_MISS_FORMS_LINK_HERE" target="_blank" class="card fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-orange">⚠️</div>
+          <span class="badge badge-open">Open access</span>
+        </div>
+        <div class="card-name">Near miss report</div>
+        <div class="card-desc">Report a near miss incident on site or on the road</div>
+        <div class="card-arrow">→</div>
+      </a>
+      <div class="card disabled fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-orange">📋</div>
+          <span class="badge badge-soon">Coming soon</span>
+        </div>
+        <div class="card-name">SIT rep</div>
+        <div class="card-desc">Safety improvement and tracking report</div>
+        <div class="card-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRIVER & OPERATIONS -->
+  <div class="section">
+    <div class="section-label">Driver &amp; operations</div>
+    <div class="cards">
+      <div class="card disabled fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-yellow">🚛</div>
+          <span class="badge badge-soon">Coming soon</span>
+        </div>
+        <div class="card-name">Driver debrief</div>
+        <div class="card-desc">End of shift debrief and route notes</div>
+        <div class="card-arrow">→</div>
+      </div>
+      <div class="card disabled fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-gray">🔒</div>
+          <span class="badge badge-login">Login required</span>
+        </div>
+        <div class="card-name">Sales leads</div>
+        <div class="card-desc">Log a new customer opportunity</div>
+        <div class="card-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOGNITION & FEEDBACK -->
+  <div class="section">
+    <div class="section-label">Recognition &amp; feedback</div>
+    <div class="cards">
+      <div class="card disabled fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-yellow">⭐</div>
+          <span class="badge badge-soon">Coming soon</span>
+        </div>
+        <div class="card-name">VIP nomination</div>
+        <div class="card-desc">Nominate a colleague for recognition</div>
+        <div class="card-arrow">→</div>
+      </div>
+      <div class="card disabled fade-in">
+        <div class="card-top">
+          <div class="card-icon icon-yellow">💬</div>
+          <span class="badge badge-soon">Coming soon</span>
+        </div>
+        <div class="card-name">General feedback</div>
+        <div class="card-desc">Suggestions or raise a concern</div>
+        <div class="card-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELP & CONTACTS -->
+  <div class="section">
+    <div class="section-label">Help &amp; contacts</div>
+    <div class="help-grid">
+      <div class="help-card">
+        <div class="help-card-title"><span>🚨</span>Urgent safety issue?</div>
+        <div class="help-card-body">Do not use a form. Contact your line manager or site supervisor directly and immediately.</div>
+      </div>
+      <div class="help-card">
+        <div class="help-card-title"><span>💻</span>Need help with a form?</div>
+        <div class="help-card-body">Contact the IT helpdesk if you have trouble submitting.<br><a href="mailto:it@brownrecyclingltd.co.uk">it@brownrecyclingltd.co.uk</a></div>
+      </div>
+      <div class="help-card">
+        <div class="help-card-title"><span>🛡️</span>HSEQ &amp; compliance</div>
+        <div class="help-card-body">For compliance or safety queries contact the HSEQ team directly.<br><a href="mailto:compliance@brownrecyclingltd.co.uk">compliance@brownrecyclingltd.co.uk</a></div>
+      </div>
+      <div class="help-card">
+        <div class="help-card-title"><span>📱</span>Scan to return</div>
+        <div class="help-card-body">Use the QR code on your vehicle or site notice board to return to this portal at any time.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-icon">🔒</div>
+    <div class="footer-text">All submissions are securely stored and accessible only to authorised staff. For urgent safety matters always speak to your manager directly.</div>
+  </div>
+</footer>
+
+</body>
+</html>
