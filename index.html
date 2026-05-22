@@ -11,10 +11,10 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --orange: #E8620A;
-    --orange-dark: #c4510a;
-    --orange-light: #FEF0E6;
-    --yellow: #FFD100;
+    --orange: #2e9ea6;
+    --orange-dark: #257f86;
+    --orange-light: #e8f6f7;
+    --yellow: #ffffff;
     --green: #107c10;
     --green-light: #dff6dd;
     --amber: #835200;
@@ -47,7 +47,7 @@
     position: absolute;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.07);
     top: -200px; right: -100px;
     pointer-events: none;
   }
@@ -56,7 +56,7 @@
     position: absolute;
     width: 250px; height: 250px;
     border-radius: 50%;
-    background: rgba(255,209,0,0.08);
+    background: rgba(255,255,255,0.06);
     bottom: -80px; left: 60px;
     pointer-events: none;
   }
@@ -110,7 +110,7 @@
 
   /* ── ANNOUNCEMENT ── */
   .announce {
-    background: #fff8f0;
+    background: #eef7f8;
     border-left: 4px solid var(--orange);
     margin: 0;
     padding: 0;
@@ -123,7 +123,7 @@
     align-items: center;
     gap: 10px;
     font-size: 13px;
-    color: #7a3a0a;
+    color: #1a5f63;
   }
   .announce-inner strong { font-weight: 600; }
   .announce-dot {
@@ -189,7 +189,7 @@
   }
   .card:hover {
     border-color: var(--orange);
-    box-shadow: 0 4px 16px rgba(232,98,10,0.12);
+    box-shadow: 0 4px 16px rgba(46,158,166,0.12);
     transform: translateY(-1px);
   }
   .card.disabled {
@@ -351,11 +351,7 @@
 <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <div class="header-logo-icon">♻️</div>
-      <div>
-        <div class="header-logo-text">Brown Recycling</div>
-        <div class="header-logo-sub">Limited</div>
-      </div>
+      <img src="data:image/png;base64,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" alt="Brown Recycling Limited" style="height:48px;width:auto;border-radius:6px;" />
     </div>
     <h1 class="header-title">Communication Hub</h1>
     <p class="header-tagline">Your central hub for reporting, feedback and operations. Most forms are open to everyone — no login needed.</p>
@@ -455,38 +451,3 @@
     </div>
   </div>
 
-  <!-- HELP & CONTACTS -->
-  <div class="section">
-    <div class="section-label">Help &amp; contacts</div>
-    <div class="help-grid">
-      <div class="help-card">
-        <div class="help-card-title"><span>🚨</span>Urgent safety issue?</div>
-        <div class="help-card-body">Do not use a form. Contact your line manager or site supervisor directly and immediately.</div>
-      </div>
-      <div class="help-card">
-        <div class="help-card-title"><span>💻</span>Need help with a form?</div>
-        <div class="help-card-body">Contact the IT helpdesk if you have trouble submitting.<br><a href="mailto:it@brownrecyclingltd.co.uk">it@brownrecyclingltd.co.uk</a></div>
-      </div>
-      <div class="help-card">
-        <div class="help-card-title"><span>🛡️</span>HSEQ &amp; compliance</div>
-        <div class="help-card-body">For compliance or safety queries contact the HSEQ team directly.<br><a href="mailto:compliance@brownrecyclingltd.co.uk">compliance@brownrecyclingltd.co.uk</a></div>
-      </div>
-      <div class="help-card">
-        <div class="help-card-title"><span>📱</span>Scan to return</div>
-        <div class="help-card-body">Use the QR code on your vehicle or site notice board to return to this portal at any time.</div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-icon">🔒</div>
-    <div class="footer-text">All submissions are securely stored and accessible only to authorised staff. For urgent safety matters always speak to your manager directly.</div>
-  </div>
-</footer>
-
-</body>
-</html>
